@@ -1,0 +1,20 @@
+micronaut:
+  application:
+    name: employeeService
+datasources:
+  default:
+    url: jdbc:mariadb://localhost:3306/employees
+    driverClassName: org.mariadb.jdbc.Driver
+    username: dbuser
+    password: dbpass
+    schema-generate: NONE
+    dialect: MYSQL
+jpa.default.properties.hibernate.hbm2ddl.auto: none
+jackson.serialization.writeDatesAsTimestamps: false
+flyway:
+  datasources:
+    default:
+      enabled: true
+      locations:
+        - classpath:db/migration
+        - classpath:db/testdata

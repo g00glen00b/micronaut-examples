@@ -1,0 +1,6 @@
+applicationType: function
+defaultPackage: be.g00glen00b.apps
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [annotation-api, app-name, aws-lambda, file-watch, file-watch-osx, gradle, http-client, java, junit, logback, readme, shade, yaml]

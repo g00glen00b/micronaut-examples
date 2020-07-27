@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  employee-db:
+    image: mariadb:10
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=t0p$ecret
+      - MYSQL_DATABASE=employees
+      - MYSQL_USER=dbuser
+      - MYSQL_PASSWORD=dbpass
+    volumes:
+      - ./data/:/var/lib/mysql
+    networks:
+      employee-app:
+        aliases:
+          - database
+  employee-app:
+    image: employee-service:latest
+    ports:
+      - 8080:8080
+    environment:
+      - DATABASE_HOST=database
+      - DATABASE_PORT=3306
+      - DATASOURCES_DEFAULT_URL=jdbc:mariadb://database:3306/employees
+    networks:
+      employee-app:
+        aliases:
+          - application
+networks:
+  employee-app:
